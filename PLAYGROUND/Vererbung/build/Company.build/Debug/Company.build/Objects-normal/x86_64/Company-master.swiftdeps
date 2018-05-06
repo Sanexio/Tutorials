@@ -1,0 +1,7 @@
+version: "Apple Swift version 1.2 (swiftlang-602.0.42.4 clang-602.0.42)"
+options: "e098d40fecf46c57d37c3011a3300f97"
+inputs: 
+- "/Users/holgerhinzberg/Documents/Eigene Dokumente/Swift Buch/Projekte/Kapitel 9 Vererbung/Person.swift"
+- "/Users/holgerhinzberg/Documents/Eigene Dokumente/Swift Buch/Projekte/Kapitel 9 Vererbung/Employee.swift"
+- "/Users/holgerhinzberg/Documents/Eigene Dokumente/Swift Buch/Projekte/Kapitel 9 Vererbung/Address.swift"
+- "/Users/holgerhinzberg/Documents/Eigene Dokumente/Swift Buch/Projekte/Kapitel 9 Vererbung/Company/main.swift"
