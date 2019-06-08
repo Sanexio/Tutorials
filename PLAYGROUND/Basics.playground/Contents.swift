@@ -1,5 +1,5 @@
 // last updates: 13.11.16, 27.10.17, 27.11.18
-// new update: 31.05.2018
+// new update: 08.06.2019
 
 import Foundation
 import Cocoa
@@ -7,11 +7,11 @@ import Cocoa
 /*
  SHORTCUTS:
  Emojis:                  Control-Command-Leertaste
- |:                       ALT-7
- []:                      ALT-5 und ALT-6
- {}:                      ALT-8 und ALT-9
- ~:                       ALT-N
- \:                       UMSCHALT-ALT-7
+ |:                       ALT(Option)-7
+ []:                      ALT(Option)-5 und ALT(Option)-6
+ {}:                      ALT(Option)-8 und ALT(Option)-9
+ ~:                       ALT(Option)-N
+ \:                       UMSCHALT-ALT(Option)-7
  
  Suchfunktion:               CMD + F
  Auto-Vervollständigung:     Ctrl + SPACE
@@ -701,7 +701,7 @@ var numericIntValue = Int(numericStringValue)
 // DEZIMALZAHLEN: Hier muss der Compiler die Landeseinstellung kennen, da bspw. in D Dezimalzahlen durch Kommata getrennt werden, in den USA durch Punkte
 var numberValue:String = "120,3456"
 var formatter = NumberFormatter()                                 // Zunächst muss ein "NSNumberFormatter" erzeugt werden
-formatter.locale = NSLocale(localeIdentifier: "de_DE") as Locale! // mit der Eigenschaft "locale" wird die Region festgesetzt
+formatter.locale = NSLocale(localeIdentifier: "de_DE") as Locale? // mit der Eigenschaft "locale" wird die Region festgesetzt
 formatter.minimumFractionDigits = 2                               // mit der Eigenschaft "minimumFractionDigits" wird die minimale Anzahl der Dezimalstellen festgesetzt
 formatter.maximumFractionDigits = 2                               // mit der Eigenschaft "maximumFractionDigits" wird die maximal Anzahl der Dezimalstellen festgesetzt
 var number:NSNumber? = formatter.number(from: numberValue)        // Methode "numberFromString" liefert einen Optional, der nil ist, wenn die Umwandlung misslingt
@@ -762,7 +762,7 @@ print(pageTitle)
 // Mit der Methode "indices" wird ein Bereich erzeugt, welcher der kompletten Länge eines übergebenden Strings entspricht:
 var myProfession = "Ich bin Softwareentwickler."
 // Eine Range anlegen, die den gesamten String beinhaltet
-var myRange = myProfession.characters.indices
+var myRange = myProfession.indices
 
 // Mit der Methode "distance" wird die Länge einer Range ermittelt:
 // Wie lang ist der Bereich von start bis end?
@@ -788,7 +788,7 @@ var planet = "Earth \u{1F30D}"
  Die Eingabe von "var symbol = planet[2]" liefert unter Swift einen Fehler.
  Möchte man ein Zeichen an einer beliebigen Position aus dem Text auslesen, benötigt man keinen Int-Typ, sondern einen "String.Index".
  Dieser wird am einfachsten aus einer Range der betreffenden Zeichenkette erstellt. */
-var planetRange = planet.characters.indices
+var planetRange = planet.indices
 /* Die Eigenschaft "startIndex" eines Bereiches verweist auf das ERSTE Zeichen im Text,
  während "endIndex" die Position NACH dem LETZTEN Zeichen angibt.
  Das erste Zeichen der Zeichenkette "planet" soll ausgelesen werden. */
@@ -801,7 +801,7 @@ var blindText
     = "Franz jagt im komplett verwahrlosten Taxi quer durch Bayern."
 //     1234567890123456768901234567890123456789012345678901234567890
 //              10         20        30        40        50        60
-var blindRange = blindText.characters.indices
+var blindRange = blindText.indices
 
 
 /* ANFANG UND ENDE VON ZEICHENKETTEN AUSSCHNEIDEN:
@@ -813,23 +813,23 @@ var demoText = "Falsches Üben von Xylophonmusik quält jeden größeren Zwerg."
 //              12345678                                             654321
 
 // Die ersten acht Zeichen:
-var pre = String(demoText.characters.prefix(8))
+var pre = String(demoText.prefix(8))
 // Die letzten sechs Zeichen:
-var sub = String(demoText.characters.suffix(6))
+var sub = String(demoText.suffix(6))
 
 // Benötigt man nur das erste oder letzte Zeichen, verwendet man die Fkt. "first" und "last":
 var xylophon = "Xylophonmusik"
-var firstChar:Character? = xylophon.characters.first
-var lastChar:Character? = xylophon.characters.last
+var firstChar:Character? = xylophon.first
+var lastChar:Character? = xylophon.last
 
 // Mit den Fkt. "dropFirst" & "dropLast" lässt sich das erste bzw. letzte Zeichen entfernen:
-var firstDroped = String(xylophon.characters.dropFirst())                                       // Das erste Zeichen entfernen
-var lastDroped = String(xylophon.characters.dropLast())                                         // Das letzte Zeichen entfernen
+var firstDroped = String(xylophon.dropFirst())                                       // Das erste Zeichen entfernen
+var lastDroped = String(xylophon.dropLast())                                         // Das letzte Zeichen entfernen
 
 // ANWENDUNGSBEISPIEL:
 var reform =  "reChtSchreiBrEforM"
-var firstChr = reform.characters.first
-reform = String(reform.characters.dropFirst())
+var firstChr = reform.first
+reform = String(reform.dropFirst())
 // Zeichenkette neu zusammensetzen
 reform = "\(String(firstChr!).uppercased())"
     + "\(reform.lowercased().lowercased())"
@@ -1231,6 +1231,10 @@ for (name, id) in dieTeilnehmer {
 }
 
 
+/* FEHLERCODE AB HIER
+
+
+
 // Die klassische for-Schleife benötigt im Schleifenkopf eine Laufvariable, sowie eine Bedingung, wie lange die Schleife laufen soll.
 // Außerdem wird noch eine Anweisung benötigt, was bei jedem Durchlauf mit der Laufvariablen geschehen soll.
 for var index = 1 ; index <= 10; index += 1     // initialisiere index mit dem Wert 1, erhöhe bei jedem Durchlauf um 1 bis index <= 10
@@ -1584,3 +1588,4 @@ while true {                                    // Endlosschleife
     }
 }
 print("Zufall: \(zufall)")
+*/
